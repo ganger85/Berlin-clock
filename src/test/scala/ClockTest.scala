@@ -28,5 +28,10 @@ class ClockTest extends  UnitSpec{
   "Top minutes" should "have 11 lamps" in {
     BerlinClock.topMinutes(34).length should be(11)
   }
-
+  it should "have 3rd, 6th and 9th lamps in red to indicate first quarter, half and last quarter" in {
+    val minutes32 = BerlinClock.topMinutes(32)
+    minutes32(2) should be('R')
+    minutes32(5) should be('R')
+    minutes32(8) should be('0')
+  }
   }
