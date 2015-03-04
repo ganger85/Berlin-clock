@@ -1,6 +1,3 @@
-/**
- * Created by arincon on 4/03/15.
- */
 class ClockTest extends  UnitSpec{
 
   "Yellow lamp" should "blink on/off every two seconds" in {
@@ -8,6 +5,8 @@ class ClockTest extends  UnitSpec{
     BerlinClock.seconds(1) should be ("O")
   }
 
-
+ "Top hours" should "have 4 lamps" in {
+    BerlinClock.topHours(7).length should be (4)
+  }
 
   }
