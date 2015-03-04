@@ -1,6 +1,23 @@
 
 object BerlinClock {
-  def topMinutes(i: Int) = generateTop((i - (i / 12)) % 12, 11)
+
+  def applyPattern(s: String) = {
+    println(s)
+    var s2: String = ""
+    for (ii: Int <- 0 until 2) {
+      var pat = s slice(0, 3)
+      println(pat)
+      if (pat == "RRR") s2 += "YYR" else s2 += pat.replace("R", "Y")
+
+
+    }
+
+
+    s2
+
+  }
+
+  def topMinutes(i: Int) = applyPattern(generateTop((i - (i / 12)) % 12, 11))
 
 
   def bottomHours(i: Int) = generateTop(i % 5, 4)

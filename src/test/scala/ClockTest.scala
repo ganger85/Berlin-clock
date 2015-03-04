@@ -34,4 +34,9 @@ class ClockTest extends  UnitSpec{
     minutes32(5) should be('R')
     minutes32(8) should be('0')
   }
+  it should "light a yellow lamp for every 5 minutes unless it's first quarter, half or last quarter" in {
+    BerlinClock.topMinutes(0) should be("00000000000")
+    BerlinClock.topMinutes(17) should be("YYR00000000")
+    BerlinClock.topMinutes(59) should be("YYRYYRYYRYY")
+  }
   }
