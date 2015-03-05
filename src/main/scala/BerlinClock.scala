@@ -19,24 +19,13 @@ object BerlinClock {
     (count == 2 | count == 5 | count == 8) && c != '0'
   }
 
-  def topMinutes(i: Int) = {
+  def topMinutes(i: Int) = applyPattern(generateTop(generateNumber(i), 11))
 
-
-    applyPattern(generateTop(generateNumber(i), 11))
-  }
-
-
-  def generateNumber(i: Int): Int = {
-    (i - (i % 5)) / 5
-  }
+  def generateNumber(i: Int): Int = (i - (i % 5)) / 5
 
   def bottomHours(i: Int) = generateTop(i % 5, 4)
 
-  def topHours(i: Int): String = {
-
-    val l = generateTop(generateNumber(i), 4)
-    l
-  }
+  def topHours(i: Int): String = generateTop(generateNumber(i), 4)
 
   def seconds(number: Int) = number % 2 match {
     case (0) => "Y"
