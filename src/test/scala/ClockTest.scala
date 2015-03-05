@@ -39,4 +39,24 @@ class ClockTest extends  UnitSpec{
     BerlinClock.topMinutes(17) should be("YYR00000000")
     BerlinClock.topMinutes(59) should be("YYRYYRYYRYY")
   }
+  "Bottom minutes" should "have 4 lamps" in {
+    BerlinClock.bottomMinutes(0).length should be(4)
+  }
+
+  it should "light a yellow lamp for every minute left from top minutes" in {
+    BerlinClock.bottomMinutes(0) should be("0000")
+    BerlinClock.bottomMinutes(17) should be("YY00")
+    BerlinClock.bottomMinutes(59) should be("YYYY")
+  }
+
+
+  "Berlin Clock" should "result in array with 5 elements" in {
+    BerlinClock.convertToBerlinTime("13:17:01").size should be(5)
+  }
+
+  it should "result in correct seconds, hours and minutes" in {
+    val berlinTime = BerlinClock.convertToBerlinTime("16:37:16")
+    val expected = Array("Y", "RRR0", "R000", "YYRYYRY0000", "YY00")
+    berlinTime should equal(expected)
+  }
   }
