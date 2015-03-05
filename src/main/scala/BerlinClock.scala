@@ -5,14 +5,18 @@ object BerlinClock {
 
     var count: Int = 0
     var s2: String = ""
+
     for (c <- s) {
-      if (isReplaceable(count, c)) s2 += 'R'
-      else if (c == 'R') s2 += 'Y'
-      else s2 += c
+      s2 += replace(count, c)
       count += 1
     }
-
     s2
+  }
+
+  def replace(c: Int, ch: Char): Char = {
+    if (isReplaceable(c, ch)) 'R'
+    else if (ch == 'R') 'Y'
+    else ch
   }
 
   def isReplaceable(count: Int, c: Char): Boolean = {
