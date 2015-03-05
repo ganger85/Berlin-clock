@@ -1,6 +1,17 @@
 
 object BerlinClock {
 
+  def convertToBerlinTime(s: String) = {
+    val parts = s.split(":").map(_.toInt)
+    Array(seconds(parts(2)), topHours(parts(0)), bottomHours(parts(0)), topMinutes(parts(1)))
+
+    //val toReturnArray=Array(seconds(sArray[3]):Int,)
+    s.toCharArray
+  }
+
+  def bottomMinutes(i: Int): String = generateTop(i % 5, 4).replace("R", "Y")
+
+
   def seconds(number: Int) = number % 2 match {
     case (0) => "Y"
     case _ => "O"
