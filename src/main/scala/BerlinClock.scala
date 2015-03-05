@@ -1,6 +1,17 @@
 
 object BerlinClock {
 
+  def seconds(number: Int) = number % 2 match {
+    case (0) => "Y"
+    case _ => "O"
+  }
+
+  def topMinutes(i: Int) = applyPattern(generateTop(generateNumber(i), 11))
+
+  def topHours(i: Int): String = generateTop(generateNumber(i), 4)
+
+  def bottomHours(i: Int) = generateTop(i % 5, 4)
+
   def applyPattern(s: String) = {
 
     var count: Int = 0
@@ -23,18 +34,7 @@ object BerlinClock {
     (count == 2 | count == 5 | count == 8) && c != '0'
   }
 
-  def topMinutes(i: Int) = applyPattern(generateTop(generateNumber(i), 11))
-
   def generateNumber(i: Int): Int = (i - (i % 5)) / 5
-
-  def bottomHours(i: Int) = generateTop(i % 5, 4)
-
-  def topHours(i: Int): String = generateTop(generateNumber(i), 4)
-
-  def seconds(number: Int) = number % 2 match {
-    case (0) => "Y"
-    case _ => "O"
-  }
 
   def generateTop(j: Int, total: Int): String = {
     var l: String = ""
